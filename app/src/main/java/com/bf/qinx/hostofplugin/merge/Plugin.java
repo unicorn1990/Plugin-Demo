@@ -25,7 +25,9 @@ public class Plugin {
 
     // apk 名
 //     private static final String PLUGIN_APK_NAME = "plugin.apk";
-    private static final String PLUGIN_APK_NAME = "cosplay_plugin.apk";
+//    private static final String PLUGIN_APK_NAME = "cosplay_plugin.apk";
+
+    private static final String PLUGIN_APK_NAME = "warcraftplugin.apk";
 
     private static Resources mPluginResources ;
 
