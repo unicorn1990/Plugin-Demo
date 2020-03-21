@@ -3,9 +3,14 @@ package com.bf.qinx.hostofplugin.merge;
 import android.app.Application;
 import android.content.Context;
 import android.content.res.Resources;
+import android.util.Log;
 
 import com.bf.qinx.hostofplugin.loadByHookAms.AMSHookHelper;
 import com.bf.qinx.hostofplugin.loadByHookInstrumentation.InstrumentationHookHelper;
+
+import java.util.Locale;
+
+import dalvik.system.PathClassLoader;
 
 /**
  * Created by QinX on 2019-06-28.
@@ -13,6 +18,17 @@ import com.bf.qinx.hostofplugin.loadByHookInstrumentation.InstrumentationHookHel
  * Description :
  */
 public class MyApplication extends Application {
+
+    private static final String TAG = "MyApplication";
+
+    @Override
+    public void onCreate() {
+        super.onCreate();
+    }
+
+//    private MyApplication(){
+//        Log.i("lusonTest","MyApplication");
+//    }
 
     @Override
     protected void attachBaseContext(Context base) {
@@ -27,14 +43,17 @@ public class MyApplication extends Application {
             /**
              * 方式二：代理AMS
              */
-//            AMSHookHelper.hook(base);
+            AMSHookHelper.hook(base);
             /**
              * 方式三：静态代理
              */
             // 没错，方式三这里什么都不用写 //
 
+            Log.i(TAG,String.format(Locale.CHINA,"before load plugin:%s",getClassLoader().toString()));
 
             Plugin.loadPluginDex(this, getClassLoader());
+
+            Log.i(TAG,String.format(Locale.CHINA,"after load plugin:%s",getClassLoader().toString()));
         } catch (Exception e) {
             e.printStackTrace();
         }

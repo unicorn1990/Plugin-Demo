@@ -5,6 +5,8 @@ import android.os.Bundle;
 import com.example.warcraft.R;
 
 /**
+ *
+ * 静态代理的activity
  * <ul>
  * <li>Author: luson.he </li>
  * <li>Time: 2020/3/1 下午11:07</li>

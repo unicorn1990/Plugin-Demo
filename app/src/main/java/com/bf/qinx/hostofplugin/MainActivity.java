@@ -10,8 +10,9 @@ import com.bf.qinx.hostofplugin.loadByStaticProxy.ProxyActivity;
 
 public class MainActivity extends Activity {
 
-    private static final String PATCH_ACTIVITY = "com.bf.qinx.patchtest.PatchActivity";
+//    private static final String PATCH_ACTIVITY = "com.bf.qinx.patchtest.PatchActivity";
 
+    private static final String PATCH_ACTIVITY = "com.example.warcraft.plugin.PatchActivity";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -20,9 +21,9 @@ public class MainActivity extends Activity {
         findViewById(R.id.btn).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startCosplayActivity();
+//                startCosplayActivity();
 
-//                startPatchActivityFormAMS();
+                startPatchActivityFormAMS();
 
 //                statPatchActivityFromInstrumentation();
             }
@@ -33,7 +34,7 @@ public class MainActivity extends Activity {
 
     private void startPatchActivityFormAMS(){
         Intent intent = new Intent();
-        ComponentName componentName = new ComponentName("com.bf.qinx.patchtest" , PATCH_ACTIVITY);
+        ComponentName componentName = new ComponentName("com.example.warcraft" , PATCH_ACTIVITY);
         intent.setComponent(componentName);
         startActivity(intent);
     }

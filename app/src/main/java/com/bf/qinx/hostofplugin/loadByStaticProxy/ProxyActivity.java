@@ -24,8 +24,8 @@ public class ProxyActivity extends Activity {
     public static final String PLUGIN_STUB = "plugin_stub";
 
     // 插件Activity类名
-//    public static final String PLUGIN_CLASS_NAME = "com.bf.qinx.cosplayplugin.PluginActivity";
-    public static final String PLUGIN_CLASS_NAME = "com.example.warcraft.plugin.PluginActivity";
+    public static final String PLUGIN_CLASS_NAME = "com.bf.qinx.cosplayplugin.PluginActivity";
+//    public static final String PLUGIN_CLASS_NAME = "com.example.warcraft.plugin.PluginActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -44,7 +44,7 @@ public class Plugin {
         File apkFile = new File(apkPath);
 
         // 创建安装插件的Classloader
-        DexClassLoader dexClassLoader = new DexClassLoader(apkFile.getAbsolutePath(), null, null,classLoader);
+        DexClassLoader dexClassLoader = new DexClassLoader(apkFile.getAbsolutePath(), context.getExternalCacheDir().getAbsolutePath(), null,classLoader);
 
         // 获取BaseDexClassLoader.dexPathList
         Object pluginDexPatchList = ReflectUtil.getField(dexClassLoader, "pathList");
