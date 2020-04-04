@@ -11,7 +11,7 @@
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
         android:textSize="20sp"
-        android:text="Hello to war3! this is war3Plugin Activity! "
+        android:text="Hello to war3! this is war3Patch Activity! "
 
          />
 

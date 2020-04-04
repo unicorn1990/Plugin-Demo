@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <public name="patch_fragment" id="0x7f041000" type="layout" />
+    <public name="patch_activity" id="0x7f041001" type="layout" />
+    <public name="plugin_activity" id="0x7f041002" type="layout" />
+
+    <public name="war3banner" id="0x7f024000" type="drawable" />
+</resources>

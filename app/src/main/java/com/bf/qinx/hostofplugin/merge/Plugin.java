@@ -84,8 +84,9 @@ public class Plugin {
      * @throws Exception
      */
     public static void loadPluginResources(Application application) throws Exception{
+        //application.getAssets()
         AssetManager assetManager = AssetManager.class.newInstance();
-        // 获取 AssetManager.addAssetPath() 方法
+        // 获取 AssetManager.addAssetPath() 方法.最终触发Nativie层AssetMananger.cpp.appendPathToResTable()创建ResTable
         Method addAssetPath = AssetManager.class.getMethod("addAssetPath", String.class);
         // 载入插件的资源
         addAssetPath.invoke(assetManager, getPatchApkPath(application));
@@ -100,6 +101,11 @@ public class Plugin {
                 application.getBaseContext(),
                 "mResources",
                 merResource);
+
+        int indentify =  merResource.getIdentifier("patch_fragment", "layout", application.getPackageName());
+        Log.i("indentify","indentify:" + indentify);
+
+
 
         // 获取 ContextImpl 中的 LoadedApk 类型的 mPackageInfo
         Field mPackageInfoField = application.getBaseContext().getClass().getDeclaredField("mPackageInfo");

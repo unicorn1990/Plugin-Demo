@@ -21,17 +21,17 @@ public class PatchActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.plugin_activity);
+        setContentView(R.layout.patch_activity);
     }
 
     public void clickButton(View view) {
-        Toast.makeText(this,"点击响应",Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "点击响应", Toast.LENGTH_SHORT).show();
     }
 
     @Override
-        public Resources getResources() {
-        Log.i("PatchActivity",getApplication()==null ? "application null ":getApplication().toString());
-        return (getApplication() != null && getApplication().getResources()!= null)
+    public Resources getResources() {
+        Log.i("PatchActivity", getApplication() == null ? "application null " : getApplication().toString());
+        return (getApplication() != null && getApplication().getResources() != null)
                 ? getApplication().getResources()
                 : super.getResources();
     }

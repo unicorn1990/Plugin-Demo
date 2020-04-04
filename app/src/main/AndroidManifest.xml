@@ -30,6 +30,7 @@
 
         <!-- 动态代理占坑Activity -->
         <activity android:name=".StubActivity"/>
+        <activity android:name=".SecondActivity" />
     </application>
 
 </manifest>

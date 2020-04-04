@@ -15,14 +15,14 @@
         android:gravity="center"
         android:paddingTop="10dp"
         android:paddingBottom="10dp"
-        android:text="I'm Host"
+        android:text="this is secondActivity"
         android:textSize="20sp"
         android:textStyle="bold"
         />
 
     <Button
         android:id="@+id/btn1"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="50dp"
         android:layout_below="@+id/mainTv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

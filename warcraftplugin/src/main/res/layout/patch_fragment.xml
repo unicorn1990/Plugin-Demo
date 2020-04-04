@@ -11,17 +11,18 @@
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
         android:textSize="20sp"
-        android:text="Hello to war3! this is war3Plugin Activity! "
+        android:text="Hello to war3! this is war3Plugin Fragment! "
 
-         />
+        />
 
     <ImageView
+        android:id="@+id/iv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:src="@drawable/war3banner"
         />
 
     <Button
+        android:id="@+id/btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="来开打啊"
