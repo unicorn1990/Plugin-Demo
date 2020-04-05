@@ -38,7 +38,7 @@ public class MainActivity extends FragmentActivity {
         findViewById(R.id.btn2).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                loadApplicationRes = true;
+                //loadApplicationRes = true;
                 FragmentManager fragmentManager = getSupportFragmentManager();
                 Fragment currentFragment = null;
                 try {
@@ -63,7 +63,7 @@ public class MainActivity extends FragmentActivity {
             @Override
             public void onClick(View v) {
 
-                loadApplicationRes = true;
+                //loadApplicationRes = true;
                 FragmentManager fragmentManager = getSupportFragmentManager();
                 Fragment currentFragment = null;
                 try {
@@ -87,8 +87,20 @@ public class MainActivity extends FragmentActivity {
         findViewById(R.id.btn4).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //loadApplicationRes = false;
                 Intent intent = new Intent(MainActivity.this,SecondActivity.class);
                 startActivity(intent);
+            }
+        });
+
+        findViewById(R.id.btn5).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FragmentManager fragmentManager = getSupportFragmentManager();
+                //先移除所有fragment
+                for(Fragment iterfragment:fragmentManager.getFragments()){
+                    fragmentManager.beginTransaction().remove(iterfragment).commit();
+                }
             }
         });
     }
@@ -98,6 +110,7 @@ public class MainActivity extends FragmentActivity {
     @Override
     public Resources getResources() {
         Log.i("MainActivity",getApplication()==null ? "application null ":getApplication().toString());
+        loadApplicationRes = false;
         if(loadApplicationRes){
             return (getApplication() != null && getApplication().getResources()!= null)
                     ? getApplication().getResources()

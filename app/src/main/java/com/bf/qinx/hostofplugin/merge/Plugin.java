@@ -102,7 +102,7 @@ public class Plugin {
                 "mResources",
                 merResource);
 
-        int indentify =  merResource.getIdentifier("patch_fragment", "layout", application.getPackageName());
+        int indentify =  application.getResources().getIdentifier("second_activity", "layout", application.getPackageName());
         Log.i("indentify","indentify:" + indentify);
 
 

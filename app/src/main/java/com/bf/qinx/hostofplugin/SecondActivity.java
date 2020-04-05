@@ -76,10 +76,10 @@ public class SecondActivity extends FragmentActivity {
         });
     }
 
-    @Override
-    public Resources getResources() {
-        return (getApplication() != null && getApplication().getResources() != null)
-                ? getApplication().getResources()
-                : super.getResources();
-    }
+//    @Override
+//    public Resources getResources() {
+//        return (getApplication() != null && getApplication().getResources() != null)
+//                ? getApplication().getResources()
+//                : super.getResources();
+//    }
 }

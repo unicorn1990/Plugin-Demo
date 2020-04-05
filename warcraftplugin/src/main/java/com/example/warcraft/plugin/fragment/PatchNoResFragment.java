@@ -50,6 +50,8 @@ public class PatchNoResFragment extends Fragment {
 
     private View createView(){
         LinearLayout linearLayout = new LinearLayout(getContext());
+        linearLayout.setLayoutParams(new ViewGroup.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,LinearLayout.LayoutParams.MATCH_PARENT));
+        linearLayout.setBackgroundColor(0xaaD81B60);
         linearLayout.setOrientation(LinearLayout.VERTICAL);
 
         TextView textView1 = new TextView(getContext());
