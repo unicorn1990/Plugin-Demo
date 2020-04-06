@@ -38,12 +38,12 @@ public class PatchResFragment extends Fragment {
         Log.i(TAG,"drawableId:" + drawableId);
         Drawable drawable = resources.getDrawable(drawableId);
         Log.i(TAG,"drawable:" + drawable);
-//        rootView =  inflater.inflate(R.layout.patch_fragment,container,false);
+        rootView =  inflater.inflate(R.layout.patch_fragment,container,false);
 //
 //        ImageView imageView = rootView.findViewById(R.id.iv);
 //        imageView.setImageDrawable(drawable);
 
-        rootView = LayoutInflater.from(getActivity().getApplication()).inflate(R.layout.patch_fragment,container,false);
+//        rootView = LayoutInflater.from(getActivity().getApplication()).inflate(R.layout.patch_fragment,container,false);
         return rootView;
     }
 

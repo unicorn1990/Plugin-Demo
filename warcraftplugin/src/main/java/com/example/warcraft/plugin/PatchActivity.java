@@ -28,11 +28,11 @@ public class PatchActivity extends Activity {
         Toast.makeText(this, "点击响应", Toast.LENGTH_SHORT).show();
     }
 
-    @Override
-    public Resources getResources() {
-        Log.i("PatchActivity", getApplication() == null ? "application null " : getApplication().toString());
-        return (getApplication() != null && getApplication().getResources() != null)
-                ? getApplication().getResources()
-                : super.getResources();
-    }
+//    @Override
+//    public Resources getResources() {
+//        Log.i("PatchActivity", getApplication() == null ? "application null " : getApplication().toString());
+//        return (getApplication() != null && getApplication().getResources() != null)
+//                ? getApplication().getResources()
+//                : super.getResources();
+//    }
 }

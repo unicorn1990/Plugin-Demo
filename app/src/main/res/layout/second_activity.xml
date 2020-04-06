@@ -20,46 +20,6 @@
         android:textStyle="bold"
         />
 
-    <Button
-        android:id="@+id/btn1"
-        android:layout_marginTop="50dp"
-        android:layout_below="@+id/mainTv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:alpha="0.5"
-        android:text="启动插件Activity"
-        />
 
-    <Button
-        android:id="@+id/btn2"
-        android:layout_below="@+id/btn1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:alpha="0.5"
-        android:text="加载无资源fragment"
-        />
-    <Button
-        android:id="@+id/btn3"
-        android:layout_below="@+id/btn2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:alpha="0.5"
-        android:text="加载带资源fragment"
-        />
-    <Button
-        android:id="@+id/btn4"
-        android:layout_below="@+id/btn3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:alpha="0.5"
-        android:text="跳转到第二个Activity"
-        />
-    <FrameLayout
-        android:id="@+id/frameLayout"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_margin="10dp"
-        android:layout_below="@+id/mainTv"
-        />
 
 </RelativeLayout>

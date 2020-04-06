@@ -12,6 +12,8 @@ import android.view.View;
 import android.widget.FrameLayout;
 
 import com.bf.qinx.hostofplugin.loadByStaticProxy.ProxyActivity;
+import com.bf.qinx.hostofplugin.merge.Plugin;
+import com.bf.qinx.hostofplugin.utils.ReflectUtil;
 
 public class MainActivity extends FragmentActivity {
 
@@ -21,8 +23,13 @@ public class MainActivity extends FragmentActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        try {
+            Plugin.addAssetPath(getAssets(),this);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         setContentView(R.layout.activity_main);
-
+        Plugin.checkResUpdate(this);
         System.out.println("luson3");
         findViewById(R.id.btn1).setOnClickListener(new View.OnClickListener() {
             @Override

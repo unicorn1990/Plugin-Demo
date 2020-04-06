@@ -10,6 +10,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
+import com.bf.qinx.hostofplugin.merge.Plugin;
+
 /**
  * <ul>
  * <li>Author: luson.he </li>
@@ -22,64 +24,18 @@ public class SecondActivity extends FragmentActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        try {
+            Plugin.addAssetPath(getAssets(),this);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         setContentView(R.layout.second_activity);
-
-        Button btn2 = findViewById(R.id.btn2);
-        if(btn2!=null)
-        btn2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                FragmentManager fragmentManager = getSupportFragmentManager();
-                Fragment currentFragment = null;
-                try {
-                    currentFragment = (Fragment) Class.forName("com.example.warcraft.plugin.fragment.PatchNoResFragment").newInstance();
-                } catch (IllegalAccessException e) {
-                    e.printStackTrace();
-                } catch (InstantiationException e) {
-                    e.printStackTrace();
-                } catch (ClassNotFoundException e) {
-                    e.printStackTrace();
-                }
-                //先移除所有fragment
-                for(Fragment iterfragment:fragmentManager.getFragments()){
-                    fragmentManager.beginTransaction().remove(iterfragment).commit();
-                }
-
-                fragmentManager.beginTransaction().add(R.id.frameLayout,currentFragment).commit();
-            }
-        });
-
-        Button btn3 = findViewById(R.id.btn3);
-        if(btn3!=null)
-        findViewById(R.id.btn3).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                FragmentManager fragmentManager = getSupportFragmentManager();
-                Fragment currentFragment = null;
-                try {
-                    currentFragment = (Fragment) Class.forName("com.example.warcraft.plugin.fragment.PatchResFragment").newInstance();
-                } catch (IllegalAccessException e) {
-                    e.printStackTrace();
-                } catch (InstantiationException e) {
-                    e.printStackTrace();
-                } catch (ClassNotFoundException e) {
-                    e.printStackTrace();
-                }
-
-                //先移除所有fragment
-                for(Fragment iterfragment:fragmentManager.getFragments()){
-                    fragmentManager.beginTransaction().remove(iterfragment).commit();
-                }
-                fragmentManager.beginTransaction().add(R.id.frameLayout,currentFragment).commit();
-            }
-        });
+        Plugin.checkResUpdate(this);
     }
 
-//    @Override
-//    public Resources getResources() {
-//        return (getApplication() != null && getApplication().getResources() != null)
-//                ? getApplication().getResources()
-//                : super.getResources();
-//    }
+    @Override
+    public Resources getResources() {
+        return super.getResources();
+    }
+
 }
