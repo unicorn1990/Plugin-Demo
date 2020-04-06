@@ -125,11 +125,13 @@ public class Plugin {
         Object packageInfoO = mPackageInfoField.get(application.getBaseContext());
         // 替换 mPackageInfo.mResources
         ReflectUtil.setField(packageInfoO, "mResources", merResource);
+        // 替换 mPackageInfo.mSplitResDirs
+        ReflectUtil.setField(packageInfoO, "mSplitResDirs", new String[]{getPatchApkPath(application)});
 
         // 替换 ContextImpl 中的 Resources.Theme
-        Field themeField = application.getBaseContext().getClass().getDeclaredField("mTheme");
-        themeField.setAccessible(true);
-        themeField.set(application.getBaseContext(), null);
+//        Field themeField = application.getBaseContext().getClass().getDeclaredField("mTheme");
+//        themeField.setAccessible(true);
+//        themeField.set(application.getBaseContext(), null);
 
 
 

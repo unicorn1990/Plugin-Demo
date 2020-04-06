@@ -24,11 +24,11 @@ public class SecondActivity extends FragmentActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        try {
-            Plugin.addAssetPath(getAssets(),this);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+//        try {
+//            Plugin.addAssetPath(getAssets(),this);
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
         setContentView(R.layout.second_activity);
         Plugin.checkResUpdate(this);
     }

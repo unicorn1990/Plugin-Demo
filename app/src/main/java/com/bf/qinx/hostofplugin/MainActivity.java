@@ -23,11 +23,11 @@ public class MainActivity extends FragmentActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        try {
-            Plugin.addAssetPath(getAssets(),this);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+//        try {
+//            Plugin.addAssetPath(getAssets(),this);
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
         setContentView(R.layout.activity_main);
         Plugin.checkResUpdate(this);
         System.out.println("luson3");
