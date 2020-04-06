@@ -5,4 +5,5 @@
     <public name="plugin_activity" id="0x7f041002" type="layout" />
 
     <public name="war3banner" id="0x7f024000" type="drawable" />
+    <public name="war3banner2" id="0x7f024001" type="drawable" />
 </resources>

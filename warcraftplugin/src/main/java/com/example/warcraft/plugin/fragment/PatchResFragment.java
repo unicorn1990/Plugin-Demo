@@ -29,30 +29,25 @@ public class PatchResFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        Resources resources = getActivity().getApplication().getResources();
-//
-        int layoutId = resources.getIdentifier("patch_fragment","layout","com.example.warcraft"/*getActivity().getPackageName()*/);
-        int drawableId = resources.getIdentifier("war3banner","drawable","com.example.warcraft"/*getActivity().getPackageName()*/);
-        Log.i(TAG,"pkg Name:" + getActivity().getPackageName());
-        Log.i(TAG,"layoutId:" + layoutId);
-        Log.i(TAG,"drawableId:" + drawableId);
-        Drawable drawable = resources.getDrawable(drawableId);
-        Log.i(TAG,"drawable:" + drawable);
+        //注释掉一些调试代码
+//        Resources resources = getActivity().getApplication().getResources();
+//        int layoutId = resources.getIdentifier("patch_fragment","layout","com.example.warcraft"/*getActivity().getPackageName()*/);
+//        int drawableId = resources.getIdentifier("war3banner","drawable","com.example.warcraft"/*getActivity().getPackageName()*/);
+//        Log.i(TAG,"pkg Name:" + getActivity().getPackageName());
+//        Log.i(TAG,"layoutId:" + layoutId);
+//        Log.i(TAG,"drawableId:" + drawableId);
+//        Drawable drawable = resources.getDrawable(drawableId);
+//        Log.i(TAG,"drawable:" + drawable);
         rootView =  inflater.inflate(R.layout.patch_fragment,container,false);
-//
-//        ImageView imageView = rootView.findViewById(R.id.iv);
-//        imageView.setImageDrawable(drawable);
 
-//        rootView = LayoutInflater.from(getActivity().getApplication()).inflate(R.layout.patch_fragment,container,false);
+        ImageView imageView = rootView.findViewById(R.id.iv2);
+        imageView.setImageDrawable(getResources().getDrawable(R.drawable.war3banner2));
         return rootView;
     }
-
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
-
 
         rootView.findViewById(R.id.btn).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -60,6 +55,5 @@ public class PatchResFragment extends Fragment {
                 Toast.makeText(getContext(),"fragment 点击",Toast.LENGTH_SHORT).show();
             }
         });
-
     }
 }

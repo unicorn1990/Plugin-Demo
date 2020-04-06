@@ -114,11 +114,6 @@ public class Plugin {
                 "mResources",
                 merResource);
 
-        int indentify =  application.getResources().getIdentifier("second_activity", "layout", application.getPackageName());
-        Log.i("indentify","indentify:" + indentify);
-
-
-
         // 获取 ContextImpl 中的 LoadedApk 类型的 mPackageInfo
         Field mPackageInfoField = application.getBaseContext().getClass().getDeclaredField("mPackageInfo");
         mPackageInfoField.setAccessible(true);
@@ -132,124 +127,6 @@ public class Plugin {
 //        Field themeField = application.getBaseContext().getClass().getDeclaredField("mTheme");
 //        themeField.setAccessible(true);
 //        themeField.set(application.getBaseContext(), null);
-
-
-
-
-        // original object
-//        Collection<WeakReference<Resources>> references = null;
-//        Object currentActivityThread = null;
-//
-//        if (SDK_INT >= KITKAT) {
-//            //pre-N
-//            // Find the singleton instance of ResourcesManager
-//            final Class<?> resourcesManagerClass = Class.forName("android.app.ResourcesManager");
-//            final Method mGetInstance = ShareReflectUtil.findMethod(resourcesManagerClass, "getInstance");
-//            final Object resourcesManager = mGetInstance.invoke(null);
-//            try {
-//                Field fMActiveResources = ShareReflectUtil.findField(resourcesManagerClass, "mActiveResources");
-//                final ArrayMap<?, WeakReference<Resources>> activeResources19 =
-//                        (ArrayMap<?, WeakReference<Resources>>) fMActiveResources.get(resourcesManager);
-//                references = activeResources19.values();
-//            } catch (NoSuchFieldException ignore) {
-//                // N moved the resources to mResourceReferences
-//                final Field mResourceReferences = ShareReflectUtil.findField(resourcesManagerClass, "mResourceReferences");
-//                references = (Collection<WeakReference<Resources>>) mResourceReferences.get(resourcesManager);
-//            }
-//        } else {
-//            // Find the ActivityThread instance for the current thread
-//            Class<?> activityThread = Class.forName("android.app.ActivityThread");
-//            currentActivityThread = ShareReflectUtil.getActivityThread(application, activityThread);
-//            final Field fMActiveResources = ShareReflectUtil.findField(activityThread, "mActiveResources");
-//            final HashMap<?, WeakReference<Resources>> activeResources7 =
-//                    (HashMap<?, WeakReference<Resources>>) fMActiveResources.get(currentActivityThread);
-//            references = activeResources7.values();
-//        }
-//
-//
-//
-//        //field
-//        Field resourcesImplFiled = null;
-//        Field assetsFiled = null;
-//        Field resDir = null;
-//        Field packagesFiled = null;
-//        Field resourcePackagesFiled = null;
-//
-//        final Resources appResources = application.getResources();
-//        if (SDK_INT >= 24) {
-//            try {
-//                // N moved the mAssets inside an mResourcesImpl field
-//                resourcesImplFiled = ShareReflectUtil.findField(appResources, "mResourcesImpl");
-//            } catch (Throwable ignore) {
-//                // for safety
-//                assetsFiled = ShareReflectUtil.findField(appResources, "mAssets");
-//            }
-//        } else {
-//            assetsFiled = ShareReflectUtil.findField(appResources, "mAssets");
-//        }
-//
-//        for (WeakReference<Resources> wr : references) {
-//            final Resources resources = wr.get();
-//            if (resources == null) {
-//                continue;
-//            }
-//            // Set the AssetManager of the Resources instance to our brand new one
-//            try {
-//                //pre-N
-//                assetsFiled.set(resources, newAssetManager);
-//            } catch (Throwable ignore) {
-//                // N
-//                final Object resourceImpl = resourcesImplFiled.get(resources);
-//                // for Huawei HwResourcesImpl
-//                final Field implAssets = ShareReflectUtil.findField(resourceImpl, "mAssets");
-//                implAssets.set(resourceImpl, newAssetManager);
-//            }
-//
-//            clearPreloadTypedArrayIssue(resources);
-//
-//            resources.updateConfiguration(resources.getConfiguration(), resources.getDisplayMetrics());
-//        }
-//
-//        // Find the ActivityThread instance for the current thread
-//        Class<?> activityThread = Class.forName("android.app.ActivityThread");
-//        currentActivityThread = ShareReflectUtil.getActivityThread(application, activityThread);
-//
-//        // API version 8 has PackageInfo, 10 has LoadedApk. 9, I don't know.
-//        Class<?> loadedApkClass;
-//        try {
-//            loadedApkClass = Class.forName("android.app.LoadedApk");
-//        } catch (ClassNotFoundException e) {
-//            loadedApkClass = Class.forName("android.app.ActivityThread$PackageInfo");
-//        }
-//
-//        resDir = ShareReflectUtil.findField(loadedApkClass, "mResDir");
-//        packagesFiled = ShareReflectUtil.findField(activityThread, "mPackages");
-//        if (Build.VERSION.SDK_INT < 27) {
-//            resourcePackagesFiled = ShareReflectUtil.findField(activityThread, "mResourcePackages");
-//        }
-//
-//
-//        final Field[] packagesFields;
-//        if (Build.VERSION.SDK_INT < 27) {
-//            packagesFields = new Field[]{packagesFiled, resourcePackagesFiled};
-//        } else {
-//            packagesFields = new Field[]{packagesFiled};
-//        }
-//        for (Field field : packagesFields) {
-//            final Object value = field.get(currentActivityThread);
-//
-//            for (Map.Entry<String, WeakReference<?>> entry
-//                    : ((Map<String, WeakReference<?>>) value).entrySet()) {
-//                final Object loadedApk = entry.getValue().get();
-//                if (loadedApk == null) {
-//                    continue;
-//                }
-//                final String resDirPath = (String) resDir.get(loadedApk);
-//                if (application.getApplicationInfo().sourceDir.equals(resDirPath)) {
-//                    //resDir.set(loadedApk, getPatchApkPath(application));
-//                }
-//            }
-//        }
 
         checkResUpdate(application);
     }

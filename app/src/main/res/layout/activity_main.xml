@@ -13,18 +13,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:paddingTop="1dp"
-        android:paddingBottom="10dp"
+        android:padding="10dp"
         android:text="I'm Host"
         android:textSize="20sp"
         android:textStyle="bold"
         />
-    <FrameLayout
-        android:id="@+id/frameLayout"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_margin="10dp"
-        />
+
 
     <Button
         android:id="@+id/btn1"
@@ -60,11 +54,20 @@
         android:alpha="0.5"
         android:text="跳转到第二个Activity"
         />
+
+    <FrameLayout
+        android:id="@+id/frameLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="10dp"
+        />
     <Button
         android:id="@+id/btn5"
-        android:layout_below="@+id/btn4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
         android:alpha="0.5"
         android:text="清理"
         />

@@ -9,25 +9,16 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.View;
-import android.widget.FrameLayout;
-
 import com.bf.qinx.hostofplugin.loadByStaticProxy.ProxyActivity;
 import com.bf.qinx.hostofplugin.merge.Plugin;
-import com.bf.qinx.hostofplugin.utils.ReflectUtil;
 
 public class MainActivity extends FragmentActivity {
 
-//    private static final String PATCH_ACTIVITY = "com.bf.qinx.patchtest.PatchActivity";
 
     private static final String PATCH_ACTIVITY = "com.example.warcraft.plugin.PatchActivity";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//        try {
-//            Plugin.addAssetPath(getAssets(),this);
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
         setContentView(R.layout.activity_main);
         Plugin.checkResUpdate(this);
         System.out.println("luson3");
