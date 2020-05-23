@@ -21,6 +21,11 @@ import com.bf.qinx.hostofplugin.merge.Plugin;
  */
 public class SecondActivity extends FragmentActivity {
 
+
+    public SecondActivity() {
+        Log.i("PatchActivity","SecondActivity construct");
+    }
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

@@ -32,20 +32,9 @@ public class AMSHookHelper {
         Class amClass = Class.forName("android.app.ActivityManager");
         Method getServiceMethod = amClass.getDeclaredMethod("getService");
         final Object iActivityManagerObje = getServiceMethod.invoke(null);
-        Field iActivityManagerSingletonField = amClass.getDeclaredField("IActivityManagerSingleton");
-        Object iActivityManagerSingletonObj = ReflectUtil.getStaticField(amClass, "IActivityManagerSingleton");
+        Object iActivityManagerSingletonObj = ReflectUtil.getStaticFieldValue(amClass, "IActivityManagerSingleton");
 
-        // 获取 mInstance
-        Class singleTonClass = Class.forName("android.util.Singleton");
-        Field mInstanceField = singleTonClass.getDeclaredField("mInstance");
-        mInstanceField.setAccessible(true);
-
-        iActivityManagerSingletonField.setAccessible(true);
-
-        // ams 实例
-        final Object amsObj = ReflectUtil.getField(iActivityManagerSingletonObj, "mInstance");
-
-        // 创建IActivityManager的代理
+        // 因为在frameWork层，无法拿到IActivityManager来继承，所以只能通过创建代码方式hook
         Class<?> iamClass = Class.forName("android.app.IActivityManager");
         Object proxy = Proxy.newProxyInstance(
                 Thread.currentThread().getContextClassLoader(),
@@ -56,7 +45,7 @@ public class AMSHookHelper {
 
                         // hook startActivity
                         if (!"startActivity".equals(method.getName())){
-                            return method.invoke(amsObj, args);
+                            return method.invoke(/*amsObj*/iActivityManagerObje, args);
                         }
 
                         // 找到intent对象
@@ -72,7 +61,7 @@ public class AMSHookHelper {
 
                         // 检查启动的Activity是否在宿主Manifest声明
                         if (StubHelper.checkActivity(context, realIntent)){
-                            return method.invoke(amsObj, args);
+                            return method.invoke(/*amsObj*/iActivityManagerObje, args);
                         }
 
                         // 使用占坑的Activity绕过AMS，替换Intent
@@ -82,13 +71,17 @@ public class AMSHookHelper {
                         stubIntent.putExtra(StubHelper.REAL_INTENT, realIntent);
                         args[intentIndex] = stubIntent;
 
-                        return method.invoke(amsObj, args);
+                        return method.invoke(/*amsObj*/iActivityManagerObje, args);
                     }
                 }
         );
 
-        // 代理ams
+        // 获取 mInstance
+        Class singleTonClass = Class.forName("android.util.Singleton");
+        Field mInstanceField = singleTonClass.getDeclaredField("mInstance");
         mInstanceField.setAccessible(true);
+
+        // 代理ams
         mInstanceField.set(iActivityManagerSingletonObj, proxy);
     }
 
@@ -96,7 +89,7 @@ public class AMSHookHelper {
     private static void restoreActivity() throws Exception{
         // 获取 ActivityThread
         Class atClass = Class.forName("android.app.ActivityThread");
-        Object curAtObj = ReflectUtil.getStaticField(atClass, "sCurrentActivityThread");
+        Object curAtObj = ReflectUtil.getStaticFieldValue(atClass, "sCurrentActivityThread");
 
         // 获取 ActivityThread 中的 handle , 即 mH
         final Handler mHObj = (Handler) ReflectUtil.getField(curAtObj, "mH");
@@ -109,7 +102,7 @@ public class AMSHookHelper {
                 try{
                     int LAUNCH_ACTIVITY = 0;
                     Class hClass = Class.forName("android.app.ActivityThread$H");
-                    LAUNCH_ACTIVITY = (int) ReflectUtil.getStaticField(hClass, "LAUNCH_ACTIVITY");
+                    LAUNCH_ACTIVITY = (int) ReflectUtil.getStaticFieldValue(hClass, "LAUNCH_ACTIVITY");
 
                     if (msg.what == LAUNCH_ACTIVITY){
                         // 恢复原来的intent

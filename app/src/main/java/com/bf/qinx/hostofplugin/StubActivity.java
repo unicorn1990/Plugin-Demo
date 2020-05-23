@@ -1,6 +1,7 @@
 package com.bf.qinx.hostofplugin;
 
 import android.app.Activity;
+import android.util.Log;
 
 /**
  * <ul>
@@ -10,4 +11,9 @@ import android.app.Activity;
  * </ul>
  */
 public class StubActivity extends Activity {
+
+
+    public StubActivity() {
+        Log.i("StubActivity","PatchActivity construct");
+    }
 }

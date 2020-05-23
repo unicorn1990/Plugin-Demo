@@ -55,11 +55,7 @@ public class MyApplication extends Application {
 
             Log.i(TAG,String.format(Locale.CHINA,"after load plugin:%s",getClassLoader().toString()));
 
-            ClassLoader loader = getClassLoader();
-            while(loader!=null){
-                Log.i(TAG,loader.getClass().getName());
-                loader = loader.getParent();
-            }
+
         } catch (Exception e) {
             e.printStackTrace();
         }

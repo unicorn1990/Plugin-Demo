@@ -14,13 +14,14 @@ import com.bf.qinx.hostofplugin.merge.Plugin;
 
 public class MainActivity extends FragmentActivity {
 
-
+    private static final String TAG = "MainActivity";
     private static final String PATCH_ACTIVITY = "com.example.warcraft.plugin.PatchActivity";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Plugin.checkResUpdate(this);
+        //ClassLoader.getSystemClassLoader();
         System.out.println("luson3");
         findViewById(R.id.btn1).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -101,6 +102,14 @@ public class MainActivity extends FragmentActivity {
                 }
             }
         });
+
+        //
+        ClassLoader loader = getClassLoader();
+        while(loader!=null){
+            Log.i(TAG,loader.getClass().toString());
+            Log.i(TAG,loader.toString());
+            loader = loader.getParent();
+        }
     }
 
     private boolean loadApplicationRes = false;
@@ -137,5 +146,26 @@ public class MainActivity extends FragmentActivity {
         intent.setClass(MainActivity.this, ProxyActivity.class);
         intent.putExtra(ProxyActivity.PLUGIN_STUB, ProxyActivity.PLUGIN_CLASS_NAME);
         startActivity(intent);
+    }
+
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
     }
 }

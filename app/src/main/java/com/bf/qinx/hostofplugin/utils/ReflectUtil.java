@@ -32,7 +32,7 @@ public class ReflectUtil {
         return field.get(obj);
     }
 
-    public static Object getStaticField(Class<?> clazz, String fieldName) throws Exception{
+    public static Object getStaticFieldValue(Class<?> clazz, String fieldName) throws Exception{
         Field field = null;
 
         while(clazz != null){

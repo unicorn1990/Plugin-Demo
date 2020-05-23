@@ -18,6 +18,11 @@ import com.example.warcraft.R;
  */
 public class PatchActivity extends Activity {
 
+
+    public PatchActivity() {
+        Log.i("PatchActivity","PatchActivity construct");
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

@@ -22,6 +22,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import dalvik.system.DexClassLoader;
+import dalvik.system.PathClassLoader;
 
 import static android.os.Build.VERSION.SDK_INT;
 import static android.os.Build.VERSION_CODES.KITKAT;
