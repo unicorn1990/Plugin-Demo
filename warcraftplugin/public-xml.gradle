@@ -4,30 +4,25 @@ afterEvaluate {
 //        variant.getVariantData().getScope();
         println "luson2 afterEvaluate"
         println("luson:"+scope);
-        String mergeTaskName = scope.getMergeJavaResourcesTask().name
-        def mergeTask = tasks.getByName(mergeTaskName)
-
-        mergeTask.doLast {
-            copy {
-                int i = 0
-                from(android.sourceSets.main.res.srcDirs) {
-                    include 'values/public.xml'
-                    rename 'public.xml', (i == 0 ? "public.xml" : "public_${i}.xml")
-                    i++
-                }
-               // into(mergeTask.outputs.toString())
-                File customedDir = new File("/Users/luson.he/work/升职级/Plugin-Demo/warcraftplugin","build/intermediates/res/merged/debug");
-
-//                File file = new File("/Users/luson.he/work/升职级/Plugin-Demo/warcraftplugin","a.txt");
+//        String mergeTaskName = scope.getMergeJavaResourcesTask().name
+//        def mergeTask = tasks.getByName(mergeTaskName)
 //
-//                FileWriter fileWriter = new FileWriter(file);
-//                fileWriter.write(customedDir.toString());
-//                fileWriter.flush();
-
-                into(customedDir)
-
-
-            }
-        }
+//        mergeTask.doLast {
+//            copy {
+//                int i = 0
+//                from(android.sourceSets.main.res.srcDirs) {
+//                    include 'values/public.xml'
+//                    rename 'public.xml', (i == 0 ? "public.xml" : "public_${i}.xml")
+//                    i++
+//                }
+//                File customedDir = new File("/Users/luson.he/work/升职级/Plugin-Demo/warcraftplugin","build/intermediates/res/merged/debug");
+//
+//                println("mergeTask.outputs.files:"+mergeTask.outputs.files);
+//
+//                into(customedDir)
+//
+//
+//            }
+//        }
     }
 }

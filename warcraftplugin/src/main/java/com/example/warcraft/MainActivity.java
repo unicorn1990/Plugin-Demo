@@ -1,13 +1,12 @@
 package com.example.warcraft;
 
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.FrameLayout;
-import android.support.v4.app.FragmentActivity;
+import androidx.fragment.app.FragmentActivity;
 
-import com.example.warcraft.plugin.fragment.PatchNoResFragment;
 import com.example.warcraft.plugin.fragment.PatchResFragment;
 
 public class MainActivity extends FragmentActivity {

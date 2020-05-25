@@ -2,13 +2,11 @@ package com.bf.qinx.hostofplugin;
 
 import android.content.res.Resources;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.FragmentManager;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.FragmentActivity;
+
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 
 import com.bf.qinx.hostofplugin.merge.Plugin;
 
@@ -33,9 +31,17 @@ public class SecondActivity extends FragmentActivity {
         Plugin.checkResUpdate(this);
     }
 
+
+    public void getString(View view) {
+        getString(R.string.app_name);
+    }
+
     @Override
     public Resources getResources() {
         return super.getResources();
     }
 
+    public void getDrawable(View view) {
+        getResources().getDrawable(R.drawable.foreigner);
+    }
 }
