@@ -1,6 +1,8 @@
+import org.gradle.api.Project
+
 apply plugin: 'com.android.application'
 
-apply from: 'public-xml.gradle'
+//apply from: 'public-xml.gradle'
 android {
     compileSdkVersion 29
 
@@ -32,4 +34,26 @@ dependencies {
     androidTestImplementation 'androidx.test:runner:1.3.0-beta02'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0-beta02'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+}
+
+afterEvaluate {
+    println('>>>>>>>>>>>>>>> afterEvaluate')
+
+    tasks.findByName('mergeDebugResources').doLast {
+//        String outputDir = it.outputs.files
+//        println('XXXXXXXXXXXX----' + outputDir)
+
+        copy {
+            int i = 0
+            from(android.sourceSets.main.res.srcDirs) {
+                include 'values/public.xml'
+                rename 'public.xml', (i == 0 ? "public.xml" : "public_${i}.xml")
+                i++
+            }
+            File dest = new File(project.buildDir, 'intermediates/res/merged/debug')
+            into(dest)
+        }
+
+    }
+
 }

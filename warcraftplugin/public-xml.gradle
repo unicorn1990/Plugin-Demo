@@ -1,28 +1,51 @@
 afterEvaluate {
-    for (variant in android.applicationVariants) {
-        def scope = variant.getVariantData().getScope()
-//        variant.getVariantData().getScope();
-        println "luson2 afterEvaluate"
-        println("luson:"+scope);
+//    for (variant in android.applicationVariants) {
+//        def scope = variant.getVariantData().getScope()
+////        variant.getVariantData().getScope();
+//        println "luson2 afterEvaluate"
+//        println("luson:"+scope);
+//        com.android.build.gradle.internal.scope.VariantScopeImpl
+//
 //        String mergeTaskName = scope.getMergeJavaResourcesTask().name
 //        def mergeTask = tasks.getByName(mergeTaskName)
-//
-//        mergeTask.doLast {
-//            copy {
-//                int i = 0
-//                from(android.sourceSets.main.res.srcDirs) {
-//                    include 'values/public.xml'
-//                    rename 'public.xml', (i == 0 ? "public.xml" : "public_${i}.xml")
-//                    i++
-//                }
-//                File customedDir = new File("/Users/luson.he/work/升职级/Plugin-Demo/warcraftplugin","build/intermediates/res/merged/debug");
-//
-//                println("mergeTask.outputs.files:"+mergeTask.outputs.files);
-//
-//                into(customedDir)
-//
-//
-//            }
-//        }
+//        mergeTask.outputs
+////
+////        mergeTask.doLast {
+////            copy {
+////                int i = 0
+////                from(android.sourceSets.main.res.srcDirs) {
+////                    include 'values/public.xml'
+////                    rename 'public.xml', (i == 0 ? "public.xml" : "public_${i}.xml")
+////                    i++
+////                }
+////                File customedDir = new File("/Users/luson.he/work/升职级/Plugin-Demo/warcraftplugin","build/intermediates/res/merged/debug");
+////
+////                println("mergeTask.outputs.files:"+mergeTask.outputs.files);
+////
+////                into(customedDir)
+////
+////
+////            }
+////        }
+//    }
+
+
+    project.task('mergeJavaResourcesTask').doLast {
+        String outputDir = it.outputs.files.asPath
+        println('>>>>>>>>>>>>>>> ' + outputDir)
+
+        copy {
+            int i = 0
+            from(android.sourceSets.main.res.srcDirs) {
+                include 'values/public.xml'
+                rename 'public.xml', (i == 0 ? "public.xml" : "public_${i}.xml")
+                i++
+            }
+            File dest = new File(project.buildDir, 'intermediates/res/merged/debug')
+            println("mergeTask.outputs.files:"+mergeTask.outputs.files);
+            into(dest)
+        }
+
     }
+
 }
