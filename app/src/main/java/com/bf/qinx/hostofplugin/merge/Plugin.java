@@ -5,11 +5,13 @@ import android.content.Context;
 import android.content.res.AssetManager;
 import android.content.res.Resources;
 import android.os.Build;
+import android.os.Environment;
 import android.util.ArrayMap;
 import android.util.Log;
 
 import com.bf.qinx.hostofplugin.utils.ReflectUtil;
 import com.bf.qinx.hostofplugin.utils.ShareReflectUtil;
+import com.bf.qinx.hostofplugin.utils.ToastUtil;
 
 import java.io.File;
 import java.io.InputStream;
@@ -56,8 +58,14 @@ public class Plugin {
         String apkPath =  getPatchApkPath(context);
         File apkFile = new File(apkPath);
 
+        if(!apkFile.exists()){
+            ToastUtil.showToastLong(context,"把插件放到，"+ apkPath);
+            Log.i(TAG,"put plugin-apk to" + apkPath);
+            return;
+        }
+
         // 创建安装插件的Classloader
-        DexClassLoader dexClassLoader = new DexClassLoader(apkFile.getAbsolutePath(), context.getExternalCacheDir().getAbsolutePath(), null,classLoader);
+        DexClassLoader dexClassLoader = new DexClassLoader(apkFile.getAbsolutePath(), context.getExternalFilesDir("plugin").getAbsolutePath(), null,classLoader);
 
         // 获取BaseDexClassLoader.dexPathList
         Object pluginDexPatchList = ReflectUtil.getField(dexClassLoader, "pathList");
@@ -169,7 +177,7 @@ public class Plugin {
     }
 
     private static String getPatchApkPath(Context context){
-            return context.getExternalCacheDir().getAbsolutePath() +
+            return context.getExternalFilesDir("plugin").getAbsolutePath() +
                 "/" + PLUGIN_APK_NAME;
     }
 
