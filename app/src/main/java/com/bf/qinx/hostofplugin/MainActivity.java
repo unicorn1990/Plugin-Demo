@@ -9,6 +9,9 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.Fragment;
 import android.util.Log;
 import android.view.View;
+
+import com.bf.qinx.hostofplugin.loadByHookAms.AMSHookHelper;
+import com.bf.qinx.hostofplugin.loadByHookInstrumentation.InstrumentationHookHelper;
 import com.bf.qinx.hostofplugin.loadByStaticProxy.ProxyActivity;
 import com.bf.qinx.hostofplugin.merge.Plugin;
 
@@ -26,11 +29,24 @@ public class MainActivity extends FragmentActivity {
         findViewById(R.id.btn1).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                startCosplayActivity();
-
-                startPatchActivityFormAMS();
-
-//                statPatchActivityFromInstrumentation();
+                /**
+                 * 方式一：自行管理Instrumentation
+                 */
+                if(HookMode.currentMode == HookMode.HOOK_MODE_INSTRUMENTATION){
+                    statPatchActivityFromInstrumentation();
+                }
+                /**
+                 * 方式二：代理AMS
+                 */
+                else if(HookMode.currentMode == HookMode.HOOK_MODE_AMS){
+                    startPatchActivityFormAMS();
+                }
+                /**
+                 * 方式三：静态代理
+                 */
+                else if(HookMode.currentMode == HookMode.HOOK_MODE_STATIC_PROXY){
+                    startCosplayActivity();
+                }
             }
         });
 

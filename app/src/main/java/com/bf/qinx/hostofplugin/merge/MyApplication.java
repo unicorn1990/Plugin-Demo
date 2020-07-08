@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.util.Log;
 
+import com.bf.qinx.hostofplugin.HookMode;
 import com.bf.qinx.hostofplugin.loadByHookAms.AMSHookHelper;
 import com.bf.qinx.hostofplugin.loadByHookInstrumentation.InstrumentationHookHelper;
 
@@ -35,19 +36,25 @@ public class MyApplication extends Application {
         super.attachBaseContext(base);
 
         try {
-
             /**
              * 方式一：自行管理Instrumentation
              */
-//            InstrumentationHookHelper.hookInstrumentation(base);
+            if(HookMode.currentMode == HookMode.HOOK_MODE_INSTRUMENTATION){
+                InstrumentationHookHelper.hookInstrumentation(base);
+            }
             /**
              * 方式二：代理AMS
              */
-            AMSHookHelper.hook(base);
+            else if(HookMode.currentMode == HookMode.HOOK_MODE_AMS){
+                AMSHookHelper.hook(base);
+            }
             /**
              * 方式三：静态代理
              */
-            // 没错，方式三这里什么都不用写 //
+            else if(HookMode.currentMode == HookMode.HOOK_MODE_STATIC_PROXY){
+                // 没错，方式三这里什么都不用写 //
+            }
+
 
             Log.i(TAG,String.format(Locale.CHINA,"before load plugin:%s",getClassLoader().toString()));
 
