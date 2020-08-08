@@ -9,9 +9,6 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.Fragment;
 import android.util.Log;
 import android.view.View;
-
-import com.bf.qinx.hostofplugin.loadByHookAms.AMSHookHelper;
-import com.bf.qinx.hostofplugin.loadByHookInstrumentation.InstrumentationHookHelper;
 import com.bf.qinx.hostofplugin.loadByStaticProxy.ProxyActivity;
 import com.bf.qinx.hostofplugin.merge.Plugin;
 

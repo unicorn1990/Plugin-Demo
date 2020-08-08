@@ -60,7 +60,7 @@ public class Plugin {
 
         if(!apkFile.exists()){
             ToastUtil.showToastLong(context,"把插件放到，"+ apkPath);
-            Log.i(TAG,"put plugin-apk to" + apkPath);
+            Log.i(TAG,"put plugin-apk to ：" + apkPath);
             return;
         }
 

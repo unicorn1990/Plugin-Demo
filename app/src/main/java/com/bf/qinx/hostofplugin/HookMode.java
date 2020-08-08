@@ -20,8 +20,11 @@ public class HookMode{
     }
 
 
+    //hook instrumentation
     public static final int HOOK_MODE_INSTRUMENTATION = 1;
+    //hook ams
     public static final int HOOK_MODE_AMS = 2;
+    //静态代理
     public static final int HOOK_MODE_STATIC_PROXY = 3;
 
     @IntDef({HOOK_MODE_AMS, HOOK_MODE_INSTRUMENTATION, HOOK_MODE_STATIC_PROXY})

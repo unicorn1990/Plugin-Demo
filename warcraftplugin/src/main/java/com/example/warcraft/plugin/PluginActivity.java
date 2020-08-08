@@ -1,6 +1,7 @@
 package com.example.warcraft.plugin;
 
 import android.os.Bundle;
+import android.widget.Toast;
 
 import com.example.warcraft.R;
 
@@ -20,4 +21,6 @@ public class PluginActivity extends BasePluginActivity{
     protected void onCreate(Bundle paramBundle) {
         setContentView(R.layout.plugin_activity);
     }
+
+
 }

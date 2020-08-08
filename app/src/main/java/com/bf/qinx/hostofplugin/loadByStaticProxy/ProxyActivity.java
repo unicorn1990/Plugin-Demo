@@ -4,6 +4,8 @@ import android.app.Activity;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Toast;
 
 import com.bf.qinx.hostofplugin.utils.ReflectUtil;
 
@@ -24,8 +26,12 @@ public class ProxyActivity extends Activity {
     public static final String PLUGIN_STUB = "plugin_stub";
 
     // 插件Activity类名
-    public static final String PLUGIN_CLASS_NAME = "com.bf.qinx.cosplayplugin.PluginActivity";
+    public static final String PLUGIN_CLASS_NAME = "com.example.warcraft.plugin.PluginActivity";
 //    public static final String PLUGIN_CLASS_NAME = "com.example.warcraft.plugin.PluginActivity";
+
+    public void clickButton(View v){
+        Toast.makeText(this, "xxx", Toast.LENGTH_SHORT).show();
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
