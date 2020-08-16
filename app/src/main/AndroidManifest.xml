@@ -31,6 +31,9 @@
         <!-- 动态代理占坑Activity -->
         <activity android:name=".StubActivity"/>
         <activity android:name=".SecondActivity" />
+        <activity android:name=".ThirdActivity"
+            android:taskAffinity="com.bf.qinx.hostofplugin2"
+            />
     </application>
 
 </manifest>

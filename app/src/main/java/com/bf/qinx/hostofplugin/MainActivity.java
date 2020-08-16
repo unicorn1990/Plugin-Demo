@@ -16,6 +16,11 @@ public class MainActivity extends FragmentActivity {
 
     private static final String TAG = "MainActivity";
     private static final String PATCH_ACTIVITY = "com.example.warcraft.plugin.PatchActivity";
+
+    public MainActivity(){
+        Log.i("MainActivity","reflect instance");
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

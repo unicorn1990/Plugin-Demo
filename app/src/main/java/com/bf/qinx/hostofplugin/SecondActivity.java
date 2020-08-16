@@ -1,5 +1,6 @@
 package com.bf.qinx.hostofplugin;
 
+import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
 import androidx.annotation.Nullable;
@@ -21,7 +22,7 @@ public class SecondActivity extends FragmentActivity {
 
 
     public SecondActivity() {
-        Log.i("PatchActivity","SecondActivity construct");
+        Log.i("SecondActivity","SecondActivity construct");
     }
 
     @Override
@@ -43,5 +44,11 @@ public class SecondActivity extends FragmentActivity {
 
     public void getDrawable(View view) {
         getResources().getDrawable(R.drawable.foreigner);
+    }
+
+    public void gotoThirdActivity(View view) {
+        Intent intent = new Intent(this,ThirdActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
     }
 }
